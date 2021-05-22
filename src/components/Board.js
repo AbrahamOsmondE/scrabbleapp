@@ -2,7 +2,7 @@
 //create sidebar
 //figure out how to store words, DAWG
 //formulate the algorithm
-import React, {useRef} from 'react';
+import React, {useRef,useState} from 'react';
 import '../App.css';
 
 const Board = ({board,handleBoardChange}) => {
@@ -11,18 +11,25 @@ const Board = ({board,handleBoardChange}) => {
   const TL = ['cell1-5', 'cell1-9', 'cell5-1', 'cell5-5', 'cell5-9', 'cell5-13', 'cell9-1', 'cell9-5', 'cell9-9', 'cell9-13', 'cell13-5', 'cell13-9'];
   const DL = ['cell3-0', 'cell3-14', 'cell11-0', 'cell11-14', 'cell0-3', 'cell0-11', 'cell7-3', 'cell7-11', 'cell14-3', 'cell14-11', 'cell2-6', 'cell2-8', 'cell6-2', 'cell8-2', 'cell6-6', 'cell6-8', 'cell8-6', 'cell8-8', 'cell12-6', 'cell12-8', 'cell6-12', 'cell8-12', 'cell11-7', 'cell3-7'];
   const refs = useRef([]);
+  const [direction,setDirection] = useState([0,1]) //direction[0] means moves down the row, direction[1] means column
   const changeFocus = (row,col) => {
     refs.current[row*15+col].focus()
   }
   const onKeyDown = (event,row,col) => {
     if(event.keyCode === 40){
-      if(row !== 14){
+      if (direction[1]) {
+        setDirection([1,0])
+      }
+      else if(row !== 14){
         changeFocus(row+1,col)
       }
     }
 
     else if(event.keyCode === 39){
-      if(col !== 14){
+      if (direction[0]){
+        setDirection([0,1])
+      }
+      else if(col !== 14){
         changeFocus(row,col+1)
       }
     }
@@ -37,7 +44,24 @@ const Board = ({board,handleBoardChange}) => {
       }
     }
   }
-  
+  const moveTile = (event,row,col) => {
+    let value = event.target.value;
+    value = value.replace(/[^A-Za-z]/gi, "")
+    if (value !== "" &&  direction[0]) {
+            changeFocus(row+1,col)
+        }
+    else if (value!== "" & direction[1]){
+      changeFocus(row,col+1)
+    }
+  }
+  const onKeyUp = (event,row,col) => {
+    if (event.keyCode === 8 & direction[0] && row !==0){
+        changeFocus(row-1,col)
+    }
+    else if(event.keyCode ===8 & direction[1] && col!==0){
+      changeFocus(row,col-1)
+    }
+}
   let rows = [];
     for (var i = 0; i < 15; i++){
       let rowID = `row${i}`
@@ -48,23 +72,32 @@ const Board = ({board,handleBoardChange}) => {
         let col = parseInt(`${idx}`)
         
         cell.push(
-        <td key={cellID} id={cellID}>
+        <td key={cellID} 
+            id={cellID}
+            className = {
+              direction[0] ?
+              "moveRight" :
+              "moveDown"}>
           <div className={
-            board[row][col] ?
-            "tile" :
-            "normalBox"
+            board[row][col] && direction[0] ?
+            "tile moveRight" :
+            board[row][col] && direction[1] ?
+            "tile moveDown" :
+            direction[0] ?  
+            "normalBox moveRight" :
+            "normalBox moveDown"
           }>
             <input 
               ref = {(element) => {refs.current[row*15+col]=element}}
               type="text" 
               maxLength="1" 
               value = {board[row][col]}
-              onKeyDown={(e) => {
-                onKeyDown(e,row,col)
-              }}
+              onKeyDown={(e) => onKeyDown(e,row,col)}
               onChange = {(e) => {
-                handleBoardChange(e,parseInt(row),parseInt(col))}
+                handleBoardChange(e,parseInt(row),parseInt(col))
+                moveTile(e,row,col)}
               }
+              onKeyUp = {(e) => onKeyUp(e,row,col)}
               placeholder = {
                 TW.indexOf(cellID) !== -1 ?
                 "TW" :

@@ -6,27 +6,22 @@ const Rack = ({rack,handleRackChange}) => {
         refs.current[num].focus()
     }
     const onKeyDown = (event,num) => {
-        if(event.keyCode === 39){
-            if(num!==6){
-                changeFocus(num+1,refs)
+        if(event.keyCode === 39 && num!==6){
+            changeFocus(num+1)
+        }
+        else if(event.keyCode===37 && num!==0){
+            changeFocus(num-1)
+        }}
+    const moveTile = (event,num) => {
+        let value = event.target.value;
+        value = value.replace(/[^A-Za-z _]/gi, "")
+        if (value !== "" && num !==6) {
+                changeFocus(num+1)
             }
         }
-        else if(event.keyCode===37){
-            if(num!==0){
-                changeFocus(num-1,refs)
-            }
-        }
-    }
     const onKeyUp = (event,num) => {
-        if ((event.keyCode >= 65 && event.keyCode <= 90) || (event.keyCode >= 97 && event.keyCode <= 122) || event.keyCode === 32){
-            if(num!==6){
-                changeFocus(num+1,refs)
-            }
-        }
-        else if(event.keyCode===8){
-            if(rack[num] === "" && num!==0){
-                changeFocus(num-1,refs)
-            }
+        if (event.keyCode === 8 & num!==0 ){
+            changeFocus(num-1)
         }
     }
     let rows = [];
@@ -47,6 +42,7 @@ const Rack = ({rack,handleRackChange}) => {
                     value = {rack[tileNum]}
                     onChange = {(e) => {
                         handleRackChange(e,tileNum)
+                        moveTile(e,tileNum)
                     }}
                     onKeyDown ={(e) =>{
                         onKeyDown(e,tileNum)

@@ -225,3 +225,13 @@ input:focus {
   overflow:auto;
   overscroll-behavior: contain;
 }
+
+.moveDown:focus-within{
+  border-right-color:springgreen;
+  border-right-width: 1px;
+}
+
+.moveRight:focus-within{
+  border-bottom-color:springgreen;
+  border-bottom-width: 1px;
+}
