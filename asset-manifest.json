@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/scrabbleapp/static/css/main.90711320.chunk.css",
-    "main.js": "/scrabbleapp/static/js/main.a37fac28.chunk.js",
-    "main.js.map": "/scrabbleapp/static/js/main.a37fac28.chunk.js.map",
+    "main.js": "/scrabbleapp/static/js/main.cd7f3310.chunk.js",
+    "main.js.map": "/scrabbleapp/static/js/main.cd7f3310.chunk.js.map",
     "runtime-main.js": "/scrabbleapp/static/js/runtime-main.b573fdb2.js",
     "runtime-main.js.map": "/scrabbleapp/static/js/runtime-main.b573fdb2.js.map",
-    "static/js/2.c70b9faa.chunk.js": "/scrabbleapp/static/js/2.c70b9faa.chunk.js",
-    "static/js/2.c70b9faa.chunk.js.map": "/scrabbleapp/static/js/2.c70b9faa.chunk.js.map",
+    "static/js/2.202c1774.chunk.js": "/scrabbleapp/static/js/2.202c1774.chunk.js",
+    "static/js/2.202c1774.chunk.js.map": "/scrabbleapp/static/js/2.202c1774.chunk.js.map",
     "index.html": "/scrabbleapp/index.html",
     "static/css/main.90711320.chunk.css.map": "/scrabbleapp/static/css/main.90711320.chunk.css.map",
-    "static/js/2.c70b9faa.chunk.js.LICENSE.txt": "/scrabbleapp/static/js/2.c70b9faa.chunk.js.LICENSE.txt"
+    "static/js/2.202c1774.chunk.js.LICENSE.txt": "/scrabbleapp/static/js/2.202c1774.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.b573fdb2.js",
-    "static/js/2.c70b9faa.chunk.js",
+    "static/js/2.202c1774.chunk.js",
     "static/css/main.90711320.chunk.css",
-    "static/js/main.a37fac28.chunk.js"
+    "static/js/main.cd7f3310.chunk.js"
   ]
 }
