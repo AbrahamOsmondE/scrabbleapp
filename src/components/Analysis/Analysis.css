@@ -4,3 +4,8 @@
   grid-template-columns: repeat(10, 10%);
   grid-template-rows: repeat(10, 10%);
 }
+
+.board {
+  grid-column: 4/8;
+  grid-row: 1/9;
+}

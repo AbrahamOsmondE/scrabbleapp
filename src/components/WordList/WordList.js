@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./WordList.css";
 const WordList = ({ length, words }) => {
   return (
     <div>

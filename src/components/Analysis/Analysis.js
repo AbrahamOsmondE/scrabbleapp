@@ -1,6 +1,6 @@
 import "./Analysis.css";
 import Board from "../Board/Board";
-import Rack from "../Rack";
+import Rack from "../Rack/Rack";
 import { useState } from "react";
 import AnalysisSidebar from "../AnalysisSidebar/AnalysisSidebar";
 function Analysis() {

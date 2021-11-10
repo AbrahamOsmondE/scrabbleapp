@@ -1,9 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import "../App.css";
-import WordList from "./WordList";
+import WordList from "../WordList/WordList";
 import tempword from "./temp";
+import "./WordSearch.css";
+
 const WordSearch = ({ match }) => {
   const [words, setWords] = useState({});
   const [query, setQuery] = useState(null);

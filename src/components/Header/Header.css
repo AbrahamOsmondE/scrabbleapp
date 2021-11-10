@@ -23,3 +23,23 @@
   display: flex;
   justify-content: baseline;
 }
+
+.nav-bar section > a {
+  color: #5e5e5e;
+  text-shadow: 0 1px 0 #fff;
+  display: block;
+  padding: 0 0.7rem;
+  text-transform: uppercase;
+  border-left: 2px solid transparent;
+  text-decoration: none;
+}
+
+.navbar-button {
+  color: #5e5e5e;
+  text-shadow: 0 1px 0 #fff;
+  display: block;
+  padding: 0 0.7rem;
+  text-transform: uppercase;
+  border-left: 2px solid transparent;
+  text-decoration: none;
+}

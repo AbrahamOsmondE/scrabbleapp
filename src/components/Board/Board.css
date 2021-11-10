@@ -213,3 +213,8 @@ input:focus {
   border-bottom-color: springgreen;
   border-bottom-width: 1px;
 }
+
+.board {
+  grid-column: 4/8;
+  grid-row: 1/9;
+}

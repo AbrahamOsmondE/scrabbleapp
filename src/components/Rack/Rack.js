@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import "../App.css";
+import "./Rack.css";
 const Rack = ({ rack, handleRackChange }) => {
   const refs = useRef([]);
   const changeFocus = (num) => {

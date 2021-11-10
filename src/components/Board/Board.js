@@ -4,82 +4,14 @@
 //formulate the algorithm
 import React, { useRef, useState } from "react";
 import "./Board.css";
-
+import { DW, TW, DL, TL } from "./constant";
 const Board = ({ board, handleBoardChange }) => {
-  const TW = [
-    "cell0-0",
-    "cell0-7",
-    "cell0-14",
-    "cell14-14",
-    "cell7-0",
-    "cell14-7",
-    "cell14-0",
-    "cell7-14",
-  ];
-  const DW = [
-    "cell1-1",
-    "cell2-2",
-    "cell3-3",
-    "cell4-4",
-    "cell1-13",
-    "cell2-12",
-    "cell3-11",
-    "cell4-10",
-    "cell13-1",
-    "cell12-2",
-    "cell11-3",
-    "cell10-4",
-    "cell13-13",
-    "cell12-12",
-    "cell11-11",
-    "cell10-10",
-  ];
-  const TL = [
-    "cell1-5",
-    "cell1-9",
-    "cell5-1",
-    "cell5-5",
-    "cell5-9",
-    "cell5-13",
-    "cell9-1",
-    "cell9-5",
-    "cell9-9",
-    "cell9-13",
-    "cell13-5",
-    "cell13-9",
-  ];
-  const DL = [
-    "cell3-0",
-    "cell3-14",
-    "cell11-0",
-    "cell11-14",
-    "cell0-3",
-    "cell0-11",
-    "cell7-3",
-    "cell7-11",
-    "cell14-3",
-    "cell14-11",
-    "cell2-6",
-    "cell2-8",
-    "cell6-2",
-    "cell8-2",
-    "cell6-6",
-    "cell6-8",
-    "cell8-6",
-    "cell8-8",
-    "cell12-6",
-    "cell12-8",
-    "cell6-12",
-    "cell8-12",
-    "cell11-7",
-    "cell3-7",
-  ];
-
   const refs = useRef([]);
   const [direction, setDirection] = useState([0, 1]); //direction[0] means moves down the row, direction[1] means column
   const changeFocus = (row, col) => {
     refs.current[row * 15 + col].focus();
   };
+
   const onKeyDown = (event, row, col) => {
     if (event.keyCode === 40) {
       if (direction[1]) {
@@ -103,6 +35,7 @@ const Board = ({ board, handleBoardChange }) => {
       }
     }
   };
+
   const moveTile = (event, row, col) => {
     let value = event.target.value;
     value = value.replace(/[^A-Za-z]/gi, "");
@@ -119,6 +52,7 @@ const Board = ({ board, handleBoardChange }) => {
       changeFocus(row, col - 1);
     }
   };
+
   let rows = [];
   for (var i = 0; i < 15; i++) {
     let rowID = `row${i}`;
