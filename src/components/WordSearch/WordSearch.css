@@ -1,0 +1,49 @@
+.WordSearch {
+  display: flex;
+  flex-direction: column;
+  width: 90vh;
+  height: 92.3vh;
+  margin: auto auto;
+}
+.WordSearchInput {
+  border-radius: 0;
+  background-color: #ffff;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 2px rgb(0, 0, 0/10%);
+  color: rgba(0, 0, 0, 0.75);
+  padding: 0 0.3em;
+  padding-left: 0.8em;
+  width: 70%;
+  height: 2.3125em;
+  font-size: 26px;
+}
+
+.WordSearchButton {
+  background: linear-gradient(to bottom, #f5f5f5 0%, #ededed 100%);
+  height: 2.2125em;
+  width: 20%;
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 33px;
+  text-shadow: 0 1px 0 #fff;
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%),
+    0 1px 5px 0 rgb(0 0 0 / 12%);
+  text-transform: uppercase;
+}
+
+.WordSearchInputs {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.WordLists {
+  background: white;
+  width: 100%;
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%),
+    0 1px 5px 0 rgb(0 0 0 / 12%);
+  height: 68vh;
+  overflow: scroll;
+  overflow-x: hidden;
+}

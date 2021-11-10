@@ -13,7 +13,6 @@ ReactDOM.render(
       <Route exact path="/" component={HomePage} />
       <Route path="/AnalysisPage" component={AnalysisPage} />
       <Route exact path="/WordSearchPage/" component={WordSearchPage} />
-      <Route path="/WordSearchPage/:word" component={WordSearchPage} />
     </Switch>
   </BrowserRouter>,
   rootElement

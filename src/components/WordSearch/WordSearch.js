@@ -2,14 +2,13 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import WordList from "../WordList/WordList";
-import tempword from "./temp";
+import { tempword, styles } from "./constant";
 import "./WordSearch.css";
 
-const WordSearch = ({ match }) => {
+const WordSearch = () => {
   const [words, setWords] = useState({});
   const [query, setQuery] = useState(null);
   const [input, setInput] = useState("");
-  const history = useHistory();
 
   const handleChange = (event, tileNum) => {
     let value = event.target.value;
@@ -18,45 +17,49 @@ const WordSearch = ({ match }) => {
   };
 
   const handleClick = () => {
-    setQuery(input);
+    setQuery(input.toUpperCase());
   };
 
   useEffect(() => {
-    if (match?.params?.word) {
-      setQuery(match.params.word.toUpperCase());
+    if (query) {
       const fetchWords = async () => {
         const { data } = await axios.get(
-          `http://127.0.0.1:8000/api/words/${match?.params?.word}`
+          `http://127.0.0.1:8000/api/words/${query}`
         );
         setWords(data);
       };
       fetchWords();
+      setTimeout(1000);
+      console.log(words);
     }
   }, [query]);
 
   return (
-    <div>
+    <div className="WordSearch">
       {query ? <h1>{`Words with ${query}`}</h1> : <h1>Enter a Word</h1>}
-      <div>
+      <div className="WordSearchInputs">
         <input
+          className="WordSearchInput"
           maxLength="10"
           value={input}
           onChange={(e) => {
             handleChange(e);
           }}
         ></input>
-        <Link to={`/WordSearchPage/${input}`} onClick={handleClick}>
+        <div className="WordSearchButton" onClick={handleClick}>
           <span>Find Words</span>
-        </Link>
+        </div>
       </div>
-      <div>
-        {Object.keys(tempword).map((key, index) => {
-          return (
-            <div key={index}>
-              <WordList length={key} words={tempword[key]}></WordList>
-            </div>
-          );
-        })}
+      <div className="WordLists">
+        {Object.keys(words)
+          .reverse()
+          .map((key, index) => {
+            return (
+              <div key={index}>
+                <WordList length={key} words={words?.[key]}></WordList>
+              </div>
+            );
+          })}
       </div>
     </div>
   );
