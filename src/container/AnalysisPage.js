@@ -1,6 +1,6 @@
-import '../App.css';
-import Header from '../components/Header'
-import Analysis from '../components/Analysis'
+import "../App.css";
+import Header from "../components/Header/Header";
+import Analysis from "../components/Analysis/Analysis";
 
 function AnalysisPage() {
   return (
@@ -11,6 +11,4 @@ function AnalysisPage() {
   );
 }
 
-export default AnalysisPage
-
-
+export default AnalysisPage;

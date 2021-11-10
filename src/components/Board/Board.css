@@ -1,0 +1,215 @@
+table {
+  border-collapse: separate;
+  border: 1px solid black;
+  margin-top: 20px;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+}
+
+td {
+  border: 1px solid black;
+  border-radius: 5px;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    0deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(238, 237, 237, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+.double-letter {
+  background: rgb(168, 228, 255);
+  background: linear-gradient(
+    0deg,
+    rgba(168, 228, 255, 1) 0%,
+    rgba(179, 232, 255, 1) 46%,
+    rgba(213, 243, 255, 1) 100%
+  );
+}
+
+.triple-letter {
+  background: rgb(1, 103, 168);
+  background: linear-gradient(
+    0deg,
+    rgba(1, 103, 168, 1) 0%,
+    rgba(15, 105, 163, 1) 49%,
+    rgba(48, 124, 172, 1) 100%
+  );
+}
+
+.double-word {
+  background: rgb(218, 86, 216);
+  background: linear-gradient(
+    0deg,
+    rgba(218, 86, 216, 1) 0%,
+    rgba(231, 126, 229, 1) 49%,
+    rgba(231, 148, 229, 1) 100%
+  );
+}
+
+.triple-word {
+  background: rgb(215, 56, 56);
+  background: linear-gradient(
+    0deg,
+    rgba(215, 56, 56, 1) 0%,
+    rgba(208, 62, 62, 1) 50%,
+    rgba(219, 48, 48, 1) 100%
+  );
+}
+.middle-tile {
+  background: rgb(218, 86, 216);
+  background: linear-gradient(
+    0deg,
+    rgba(218, 86, 216, 1) 0%,
+    rgba(231, 126, 229, 1) 49%,
+    rgba(231, 148, 229, 1) 100%
+  );
+}
+
+table td div {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+table td div input {
+  width: 80%;
+  height: 80%;
+  text-align: center;
+  padding: 0;
+  margin-top: 5px;
+  margin-left: 4.5px;
+  font-size: 30px;
+  line-height: 20px;
+  border: 0 solid transparent;
+  background: transparent;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+input:focus {
+  outline: none;
+}
+#cell0-0,
+#cell0-7,
+#cell0-14,
+#cell14-14,
+#cell7-0,
+#cell14-7,
+#cell14-0,
+#cell7-14 {
+  background: rgb(215, 56, 56);
+  background: linear-gradient(
+    0deg,
+    rgba(215, 56, 56, 1) 0%,
+    rgba(208, 62, 62, 1) 50%,
+    rgba(219, 48, 48, 1) 100%
+  );
+}
+
+#cell1-1,
+#cell2-2,
+#cell3-3,
+#cell4-4,
+#cell1-13,
+#cell2-12,
+#cell3-11,
+#cell4-10,
+#cell13-1,
+#cell12-2,
+#cell11-3,
+#cell10-4,
+#cell7-7,
+#cell13-13,
+#cell12-12,
+#cell11-11,
+#cell10-10 {
+  background: rgb(218, 86, 216);
+  background: linear-gradient(
+    0deg,
+    rgba(218, 86, 216, 1) 0%,
+    rgba(231, 126, 229, 1) 49%,
+    rgba(231, 148, 229, 1) 100%
+  );
+}
+#cell1-5,
+#cell1-9,
+#cell5-1,
+#cell5-5,
+#cell5-9,
+#cell5-13,
+#cell9-1,
+#cell9-5,
+#cell9-9,
+#cell9-13,
+#cell13-5,
+#cell13-9 {
+  background: rgb(1, 103, 168);
+  background: linear-gradient(
+    0deg,
+    rgba(1, 103, 168, 1) 0%,
+    rgba(15, 105, 163, 1) 49%,
+    rgba(48, 124, 172, 1) 100%
+  );
+}
+#cell3-0,
+#cell3-14,
+#cell11-0,
+#cell11-14,
+#cell0-3,
+#cell0-11,
+#cell7-3,
+#cell7-11,
+#cell14-3,
+#cell14-11,
+#cell2-6,
+#cell2-8,
+#cell6-2,
+#cell8-2,
+#cell6-6,
+#cell6-8,
+#cell8-6,
+#cell8-8,
+#cell12-6,
+#cell12-8,
+#cell6-12,
+#cell8-12,
+#cell11-7,
+#cell3-7 {
+  background: rgb(168, 228, 255);
+  background: linear-gradient(
+    0deg,
+    rgba(168, 228, 255, 1) 0%,
+    rgba(179, 232, 255, 1) 46%,
+    rgba(213, 243, 255, 1) 100%
+  );
+}
+.tile {
+  border-radius: 7px;
+  background: rgb(233, 187, 23);
+  background: linear-gradient(
+    0deg,
+    rgba(233, 187, 23, 1) 0%,
+    rgba(247, 196, 65, 1) 65%,
+    rgba(246, 211, 88, 1) 100%
+  );
+}
+::placeholder {
+  color: white;
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 21px;
+  text-align: center;
+  font-weight: normal;
+}
+
+.moveDown:focus-within {
+  border-right-color: springgreen;
+  border-right-width: 1px;
+}
+
+.moveRight:focus-within {
+  border-bottom-color: springgreen;
+  border-bottom-width: 1px;
+}

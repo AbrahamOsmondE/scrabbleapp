@@ -1,0 +1,6 @@
+.analysis-section {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(10, 10%);
+  grid-template-rows: repeat(10, 10%);
+}

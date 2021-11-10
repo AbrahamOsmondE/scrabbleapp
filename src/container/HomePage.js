@@ -1,5 +1,5 @@
-import '../App.css';
-import Header from '../components/Header'
+import "../App.css";
+import Header from "../components/Header/Header";
 
 function HomePage() {
   return (
@@ -10,5 +10,4 @@ function HomePage() {
   );
 }
 
-export default HomePage
-
+export default HomePage;
