@@ -1,8 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
 import WordList from "../WordList/WordList";
-import { tempword, styles } from "./constant";
+
 import "./WordSearch.css";
 
 const WordSearch = () => {
