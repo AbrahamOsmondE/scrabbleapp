@@ -12,7 +12,7 @@ const WordSearch = () => {
 
   const handleChange = (event, tileNum) => {
     let value = event.target.value;
-    value = value.replace(/[^A-Za-z_]/gi, "");
+    value = value.replace(/[^A-Za-z*]/gi, "");
     setInput(value);
   };
 
