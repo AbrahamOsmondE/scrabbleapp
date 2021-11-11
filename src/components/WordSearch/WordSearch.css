@@ -3,7 +3,19 @@
   flex-direction: column;
   width: 90vh;
   height: 92.3vh;
-  margin: auto auto;
+}
+h1 {
+  margin-bottom: 0.5vh;
+}
+.WordSearchApps {
+  margin: 5vh 8vh;
+  max-width: 35vh;
+}
+
+.WordSearchContainer {
+  display: flex;
+  flex-direction: row;
+  height: 92.3vh;
 }
 .WordSearchInput {
   border-radius: 0;
@@ -30,6 +42,10 @@
   box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%),
     0 1px 5px 0 rgb(0 0 0 / 12%);
   text-transform: uppercase;
+}
+
+.WordSearchButton:hover {
+  cursor: pointer;
 }
 
 .WordSearchInputs {
