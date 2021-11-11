@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import DefinitionBlock from "../DefinitionBlock/DefinitionBlock";
 import Dropdown from "../Dropdown/Dropdown";
 import WordList from "../WordList/WordList";
 import {
@@ -16,8 +17,24 @@ const WordSearch = () => {
   const [queryResponse, setQueryResponse] = useState("Words made using");
   const [input, setInput] = useState(null);
   const [searchFunction, setSearchFunction] = useState("wordbuilder");
+  const [definition, setDefinition] = useState(null);
+  const [definitionQuery, setDefinitionQuery] = useState(null);
 
-  const handleChange = (event, tileNum) => {
+  const fetchWords = async () => {
+    const { data } = await axios.get(
+      `http://127.0.0.1:8000/api/${searchFunction}/${query}`
+    );
+    setWords(data);
+  };
+
+  const fetchDefinition = async () => {
+    const { data } = await axios.get(
+      `http://127.0.0.1:8000/api/definition/${definitionQuery}`
+    );
+    setDefinition(data);
+  };
+
+  const handleChange = (event) => {
     let value = event.target.value;
     value = value.replace(/[^A-Za-z*]/gi, "");
     if (value.split("*").length - 1 > 1) {
@@ -36,17 +53,15 @@ const WordSearch = () => {
 
   useEffect(() => {
     if (query) {
-      const fetchWords = async () => {
-        const { data } = await axios.get(
-          `http://127.0.0.1:8000/api/${searchFunction}/${query}`
-        );
-        setWords(data);
-      };
       fetchWords();
-      setTimeout(1000);
-      console.log(words);
     }
   }, [query]);
+
+  useEffect(() => {
+    if (definitionQuery) {
+      fetchDefinition(definitionQuery);
+    }
+  }, [definitionQuery]);
 
   return (
     <div className="WordSearchContainer">
@@ -54,14 +69,19 @@ const WordSearch = () => {
         <Dropdown
           values={dropdownValues}
           setSearchFunction={setSearchFunction}
+          setQuery={setQuery}
         />
-        {searchDescription?.[searchFunction]}
+        <div>{searchDescription?.[searchFunction]}</div>
+        <DefinitionBlock
+          definition={definition}
+          definitionQuery={definitionQuery}
+        />
       </div>
       <div className="WordSearch">
         {query ? (
           <h1>{`${queryResponse} ${query}`}</h1>
         ) : (
-          <h1>Enter some Letters</h1>
+          <h1>Enter some characters</h1>
         )}
         Wild card is *, currently only supports 1 wild card
         <div className="WordSearchInputs">
@@ -79,11 +99,18 @@ const WordSearch = () => {
         </div>
         <div className="WordLists">
           {Object.keys(words)
+            .sort((a, b) => {
+              return parseInt(a) - parseInt(b);
+            })
             .reverse()
-            .map((key, index) => {
+            .map((length, index) => {
               return (
                 <div key={index}>
-                  <WordList length={key} words={words?.[key]}></WordList>
+                  <WordList
+                    length={length}
+                    words={words?.[length]}
+                    setDefinitionQuery={setDefinitionQuery}
+                  ></WordList>
                 </div>
               );
             })}

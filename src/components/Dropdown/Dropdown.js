@@ -1,8 +1,9 @@
 import React from "react";
 import "./Dropdown.css";
-const Dropdown = ({ values, setSearchFunction }) => {
+const Dropdown = ({ values, setSearchFunction, setQuery }) => {
   const handleSelect = (e) => {
     setSearchFunction(e.target.value);
+    setQuery(null);
   };
   return (
     <div className="Dropdown">
