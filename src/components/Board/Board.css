@@ -199,7 +199,7 @@ input:focus {
   color: white;
   font-weight: bold;
   margin-bottom: 5px;
-  font-size: 21px;
+  font-size: 2.8vh;
   text-align: center;
   font-weight: normal;
 }
@@ -215,6 +215,4 @@ input:focus {
 }
 
 .board {
-  grid-column: 4/8;
-  grid-row: 1/9;
 }

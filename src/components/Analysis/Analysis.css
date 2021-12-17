@@ -1,11 +1,11 @@
 .analysis-section {
-  height: 100vh;
-  display: grid;
-  grid-template-columns: repeat(10, 10%);
-  grid-template-rows: repeat(10, 10%);
+  height: 120vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
-.board {
-  grid-column: 4/8;
-  grid-row: 1/9;
+.board-section {
+  width: 93vh;
+  height: 60vh;
 }

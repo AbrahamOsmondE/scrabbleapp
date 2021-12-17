@@ -1,7 +1,3 @@
-/* eslint-disable no-loop-func */
-//create sidebar
-//figure out how to store words, DAWG
-//formulate the algorithm
 import React, { useRef, useState } from "react";
 import "./Board.css";
 import { DW, TW, DL, TL } from "./constant";

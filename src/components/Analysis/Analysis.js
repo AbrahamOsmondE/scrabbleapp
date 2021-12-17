@@ -25,7 +25,7 @@ function Analysis() {
 
   const handleRackChange = (event, tileNum) => {
     let value = event.target.value;
-    value = value.replace(/[^A-Za-z _]/gi, "");
+    value = value.replace(/[^A-Za-z]/gi, "");
     let copy = [...rack];
     copy[tileNum] = value;
     setRack(copy);
@@ -33,9 +33,13 @@ function Analysis() {
 
   return (
     <div className="analysis-section">
-      <Board board={board} handleBoardChange={handleBoardChange} />
-      <AnalysisSidebar board={board} rack={rack} />
-      <Rack rack={rack} handleRackChange={handleRackChange} />
+      <div className="board-section">
+        <Board board={board} handleBoardChange={handleBoardChange} />
+        <Rack rack={rack} handleRackChange={handleRackChange} />
+      </div>
+      <div>
+        <AnalysisSidebar board={board} rack={rack} />
+      </div>
     </div>
   );
 }
