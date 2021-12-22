@@ -19,6 +19,11 @@ const Header = () => {
               <span>Word Search</span>
             </Link>
           </section>
+          <section>
+            <Link to="/PuzzlePage">
+              <span>Puzzle</span>
+            </Link>
+          </section>
         </nav>
       </div>
       <div className="nav-bar">
