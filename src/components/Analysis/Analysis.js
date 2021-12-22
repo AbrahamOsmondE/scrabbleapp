@@ -13,6 +13,16 @@ function Analysis() {
     matrix.push(row);
   }
   const [board, setBoard] = useState(matrix);
+  const [previousBoard, setPreviousBoard] = useState(matrix);
+  const [previousRack, setPreviousRack] = useState([
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+  ]);
   const [rack, setRack] = useState(["", "", "", "", "", "", ""]);
 
   const handleBoardChange = (event, row, col) => {
@@ -38,7 +48,16 @@ function Analysis() {
         <Rack rack={rack} handleRackChange={handleRackChange} />
       </div>
       <div>
-        <AnalysisSidebar board={board} rack={rack} />
+        <AnalysisSidebar
+          setPreviousBoard={setPreviousBoard}
+          setPreviousRack={setPreviousRack}
+          setBoard={setBoard}
+          setRack={setRack}
+          previousBoard={previousBoard}
+          previousRack={previousRack}
+          board={board}
+          rack={rack}
+        />
       </div>
     </div>
   );
