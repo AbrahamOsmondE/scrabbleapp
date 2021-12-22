@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import "./Rack.css";
-const Rack = ({ rack, handleRackChange }) => {
+const Rack = ({ rack, handleRackChange, rackRef }) => {
   const refs = useRef([]);
   const changeFocus = (num) => {
     refs.current[num].focus();
@@ -52,6 +52,10 @@ const Rack = ({ rack, handleRackChange }) => {
       </div>
     );
   }
-  return <div className="rack">{rows}</div>;
+  return (
+    <div className="rack" ref={rackRef}>
+      {rows}
+    </div>
+  );
 };
 export default Rack;

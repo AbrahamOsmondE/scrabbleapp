@@ -1,7 +1,7 @@
 import "./Analysis.css";
 import Board from "../Board/Board";
 import Rack from "../Rack/Rack";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import AnalysisSidebar from "../AnalysisSidebar/AnalysisSidebar";
 function Analysis() {
   const matrix = [];
@@ -24,13 +24,16 @@ function Analysis() {
     "",
   ]);
   const [rack, setRack] = useState(["", "", "", "", "", "", ""]);
+  const [solutions, setSolutions] = useState([]);
 
+  const rackRef = useRef(null);
   const handleBoardChange = (event, row, col) => {
     let value = event.target.value;
     value = value.replace(/[^A-Za-z]/gi, "");
     let copy = [...board];
     copy[row][col] = value;
     setBoard(copy);
+    setSolutions([]);
   };
 
   const handleRackChange = (event, tileNum) => {
@@ -39,13 +42,21 @@ function Analysis() {
     let copy = [...rack];
     copy[tileNum] = value;
     setRack(copy);
+    setSolutions([]);
   };
+
+  const handleEmptyRack = () =>
+    rackRef.current.scrollIntoView({ behavior: "smooth" });
 
   return (
     <div className="analysis-section">
       <div className="board-section">
         <Board board={board} handleBoardChange={handleBoardChange} />
-        <Rack rack={rack} handleRackChange={handleRackChange} />
+        <Rack
+          rackRef={rackRef}
+          rack={rack}
+          handleRackChange={handleRackChange}
+        />
       </div>
       <div>
         <AnalysisSidebar
@@ -57,6 +68,9 @@ function Analysis() {
           previousRack={previousRack}
           board={board}
           rack={rack}
+          solutions={solutions}
+          setSolutions={setSolutions}
+          handleEmptyRack={handleEmptyRack}
         />
       </div>
     </div>

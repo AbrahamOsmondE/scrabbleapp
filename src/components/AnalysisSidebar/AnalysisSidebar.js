@@ -14,11 +14,22 @@ const AnalysisSidebar = ({
   setRack,
   previousBoard,
   previousRack,
+  solutions,
+  setSolutions,
+  handleEmptyRack,
 }) => {
-  const [solutions, setSolutions] = useState([]);
   const [active, setActive] = useState(null);
 
   const solveBoard = async () => {
+    if (
+      rack.every((char) => {
+        return char === "";
+      })
+    ) {
+      console.log(2);
+      handleEmptyRack();
+      return;
+    }
     setPreviousBoard(board);
     setPreviousRack(rack);
     let boardString = "";
@@ -54,7 +65,7 @@ const AnalysisSidebar = ({
       let temporaryRow = [...previousBoard[row]];
       temporaryBoard.push(temporaryRow);
     }
-    let temporaryRack = [...previousRack];
+    let temporaryRack = previousRack.map((i) => i.toUpperCase());
     let wordIndex = 0;
 
     if (solutions[index]?.direction === "across") {
@@ -66,7 +77,8 @@ const AnalysisSidebar = ({
       ) {
         if (temporaryBoard[nonMovingIndex][i] === "") {
           temporaryRack.splice(
-            temporaryRack.indexOf(solutions[index]?.word[wordIndex], 1)
+            temporaryRack.indexOf(solutions[index]?.word[wordIndex]),
+            1
           );
           temporaryBoard[nonMovingIndex][i] = solutions[index]?.word[wordIndex];
         }
@@ -81,7 +93,8 @@ const AnalysisSidebar = ({
       ) {
         if (temporaryBoard[j][nonMovingIndex] === "") {
           temporaryRack.splice(
-            temporaryRack.indexOf(solutions[index]?.word[wordIndex], 1)
+            temporaryRack.indexOf(solutions[index]?.word[wordIndex]),
+            1
           );
           temporaryBoard[j][nonMovingIndex] = solutions[index]?.word[wordIndex];
         }
@@ -97,41 +110,39 @@ const AnalysisSidebar = ({
   };
 
   useEffect(() => {
-    handleRackBoardChange(0);
+    if (solutions.length !== 0) {
+      handleRackBoardChange(0);
+    }
   }, [solutions]);
 
   // console.log(solutions);
-  console.log(previousBoard, "tempoBoard");
-  console.log(previousRack, "tempoRack");
-  console.log(rack, "rack");
-  console.log(board, "board");
-  return (
-    <div>
-      <div className={"AnalysisSidebar"}>
-        <div className={"sidebarhead"}></div>
-        <div className={"AnalysisResults"}>
-          {solutions.length !== 0 && <h3>Showing top 50 results</h3>}
-          {solutions?.map((result, index) => {
-            return (
-              <div
-                key={index}
-                onClick={() => {
-                  setActive(index);
-                  handleRackBoardChange(index);
-                }}
-              >
-                <div>{result?.word}</div>
-                <div>Points : {result?.points} </div>
-                <hr />
-              </div>
-            );
-          })}
-        </div>
-      </div>
 
-      <div>
-        <button onClick={solveBoard}>solve</button>
-        <button onClick={handleResetSearch}>undo search</button>
+  return (
+    <div className={"AnalysisSidebar"}>
+      <div className={"sidebarhead"}></div>
+      <div className={"AnalysisResults"}>
+        {solutions.length !== 0 && (
+          <div className={"AnalysisSidebarHeader"}>Showing top 50 results</div>
+        )}
+        {solutions?.map((result, index) => {
+          return (
+            <div
+              className={index === active ? "ActiveWord" : "NormalWord"}
+              key={index}
+              onClick={() => {
+                setActive(index);
+                handleRackBoardChange(index);
+              }}
+            >
+              <div>{result?.word}</div>
+              <div>Points : {result?.points} </div>
+            </div>
+          );
+        })}
+      </div>
+      <div className={"AnalysisSidebarButtons"}>
+        <button onClick={solveBoard}>Solve</button>
+        <button onClick={handleResetSearch}>Undo Search</button>
       </div>
     </div>
   );
