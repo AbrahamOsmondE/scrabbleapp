@@ -4,7 +4,7 @@ import Header from "../components/Header/Header";
 import StaticRack from "../components/StaticRack/StaticRack";
 
 const PuzzlePage = () => {
-  const [puzzle, setPuzzle] = useState({});
+  const [puzzle, setPuzzle] = useState({ solutions: {} });
   const [rack, setRack] = useState(["", "", "", "", "", "", ""]);
   const [puzzlePlaceholder, setPuzzlePlaceholder] = useState({});
   const [errors, setErrors] = useState(0);

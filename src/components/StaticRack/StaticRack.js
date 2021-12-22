@@ -16,6 +16,6 @@ const StaticRack = ({ rack }) => {
       </div>
     );
   }
-  return <div className="rack">{rows}</div>;
+  return <div className="staticRack">{rows}</div>;
 };
 export default StaticRack;
