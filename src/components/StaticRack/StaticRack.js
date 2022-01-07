@@ -6,7 +6,7 @@ const StaticRack = ({ rack }) => {
     let tileID = `tile${i}`;
     let tileNum = parseInt(`${i}`);
     rows.push(
-      <div key={tileID} className={rack[tileNum] ? "tileRack" : "normalRack"}>
+      <div key={tileID} className={rack[tileNum] ? "TileRack" : "NormalRack"}>
         <input
           id={tileID}
           type="text"
@@ -16,6 +16,6 @@ const StaticRack = ({ rack }) => {
       </div>
     );
   }
-  return <div className="staticRack">{rows}</div>;
+  return <div className="StaticRack">{rows}</div>;
 };
 export default StaticRack;

@@ -1,0 +1,10 @@
+.PuzzleLengthBlock {
+  max-width: 30%;
+  margin: 0 auto;
+  margin-left: 3vh;
+  margin-bottom: 3vh;
+}
+
+.PuzzleLengthText {
+  font-size: 3vh;
+}
