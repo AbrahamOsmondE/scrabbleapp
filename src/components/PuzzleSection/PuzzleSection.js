@@ -99,6 +99,18 @@ const PuzzleSection = () => {
     setPuzzlePlaceholder(temporaryPuzzlePlaceholder);
   };
 
+  const submitPuzzleScore = async () => {
+    const headers = {
+      "Content-Type": "application/json",
+    };
+    const data = {
+      user: localStorage.getItem("tokenId"),
+      letters: rack.join(""),
+      errors: errors,
+      correct_answers: corrects,
+      possible_answers: puzzle?.count,
+    };
+  };
   return (
     <div className="PuzzleSection">
       <div className="PuzzleSectionInfos">

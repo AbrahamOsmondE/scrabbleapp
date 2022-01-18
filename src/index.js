@@ -6,6 +6,7 @@ import HomePage from "./container/HomePage";
 import AnalysisPage from "./container/AnalysisPage";
 import WordSearchPage from "./container/WordSearchPage";
 import PuzzlePage from "./container/PuzzlePage";
+import ProfilePage from "./container/ProfilePage";
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(
@@ -15,6 +16,7 @@ ReactDOM.render(
       <Route path="/AnalysisPage" component={AnalysisPage} />
       <Route exact path="/WordSearchPage/" component={WordSearchPage} />
       <Route exact path="/PuzzlePage/" component={PuzzlePage} />
+      <Route exact path="/Profile/" component={ProfilePage} />
     </Switch>
   </BrowserRouter>,
   rootElement

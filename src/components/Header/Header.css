@@ -7,6 +7,7 @@
   height: 60px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   position: relative;
   max-width: 1800px;
   margin: auto;
@@ -34,7 +35,11 @@
   text-decoration: none;
 }
 
-.navbar-button {
+.nav-bar-login {
+  width: 40vh;
+}
+
+.nav-bar-login section > a {
   color: #5e5e5e;
   text-shadow: 0 1px 0 #fff;
   display: block;
@@ -42,4 +47,10 @@
   text-transform: uppercase;
   border-left: 2px solid transparent;
   text-decoration: none;
+}
+
+.logout {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
