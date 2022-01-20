@@ -97,6 +97,7 @@ const PuzzleSection = () => {
     });
 
     setPuzzlePlaceholder(temporaryPuzzlePlaceholder);
+    submitPuzzleScore().then((res) => {});
   };
 
   const submitPuzzleScore = async () => {
@@ -104,12 +105,14 @@ const PuzzleSection = () => {
       "Content-Type": "application/json",
     };
     const data = {
-      user: localStorage.getItem("tokenId"),
+      user: localStorage.getItem("tokenId").slice(1, -1),
       letters: rack.join(""),
       errors: errors,
       correct_answers: corrects,
       possible_answers: puzzle?.count,
     };
+
+    return axios.post("http://127.0.0.1:8000/puzzle/submit", data, { headers });
   };
   return (
     <div className="PuzzleSection">

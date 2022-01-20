@@ -32,7 +32,6 @@ const Header = () => {
       last_name: response.profileObj.familyName,
       google_id: response.profileObj.googleId,
     };
-    console.log(response.profileObj);
     setLoginData(data);
     localStorage.setItem("loginData", JSON.stringify(data));
     localStorage.setItem(
@@ -40,9 +39,7 @@ const Header = () => {
       JSON.stringify(response.profileObj.googleId)
     );
 
-    validateTokenAndObtainSession({ data, idToken }).then((res) => {
-      console.log(res);
-    });
+    validateTokenAndObtainSession({ data, idToken }).then((res) => {});
   }, []);
 
   const onGoogleLogoutSuccess = () => {
