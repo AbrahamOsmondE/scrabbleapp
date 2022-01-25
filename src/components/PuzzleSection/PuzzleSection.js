@@ -11,11 +11,15 @@ const PuzzleSection = () => {
   const [errors, setErrors] = useState(0);
   const [corrects, setCorrects] = useState(0);
   const [input, setInput] = useState(null);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
   const getRandomWord = async () => {
     const { data } = await axios.get(`http://127.0.0.1:8000/api/puzzle`);
     setCorrects(0);
     setErrors(0);
+    if (!hasSubmitted) {
+      submitPuzzleScore().then((res) => {});
+    }
     let temporaryPuzzlePlaceholder = {};
     Object.keys(data.solutions).map((length) => {
       temporaryPuzzlePlaceholder[length] = [...data.solutions[length]].map(
@@ -32,6 +36,7 @@ const PuzzleSection = () => {
     }
 
     setRack(temporaryRack);
+    setHasSubmitted(false);
   };
 
   useEffect(() => {
@@ -97,21 +102,26 @@ const PuzzleSection = () => {
     });
 
     setPuzzlePlaceholder(temporaryPuzzlePlaceholder);
-    submitPuzzleScore().then((res) => {});
+    if (!hasSubmitted) {
+      submitPuzzleScore().then((res) => {});
+    }
   };
 
   const submitPuzzleScore = async () => {
+    if (!localStorage.getItem("tokenId")) {
+      return;
+    }
     const headers = {
       "Content-Type": "application/json",
     };
     const data = {
-      user: localStorage.getItem("tokenId").slice(1, -1),
+      user: localStorage.getItem("tokenId")?.slice(1, -1),
       letters: rack.join(""),
       errors: errors,
       correct_answers: corrects,
       possible_answers: puzzle?.count,
     };
-
+    setHasSubmitted(true);
     return axios.post("http://127.0.0.1:8000/puzzle/submit", data, { headers });
   };
   return (

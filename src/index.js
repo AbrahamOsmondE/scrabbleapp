@@ -12,7 +12,7 @@ const rootElement = document.getElementById("root");
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={HomePage} />
+      <Route exact path="/" component={AnalysisPage} />
       <Route path="/AnalysisPage" component={AnalysisPage} />
       <Route exact path="/WordSearchPage/" component={WordSearchPage} />
       <Route exact path="/PuzzlePage/" component={PuzzlePage} />

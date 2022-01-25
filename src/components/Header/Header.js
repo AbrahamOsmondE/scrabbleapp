@@ -39,7 +39,9 @@ const Header = () => {
       JSON.stringify(response.profileObj.googleId)
     );
 
-    validateTokenAndObtainSession({ data, idToken }).then((res) => {});
+    validateTokenAndObtainSession({ data, idToken }).then((res) => {
+      console.log(res);
+    });
   }, []);
 
   const onGoogleLogoutSuccess = () => {
