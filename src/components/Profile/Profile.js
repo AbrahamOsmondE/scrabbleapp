@@ -12,17 +12,18 @@ const Profile = () => {
 
   const history = useHistory();
 
+  const params = {
+    google_id: `${localStorage.getItem("tokenId").slice(1, -1)}`,
+  };
   const getUserData = async () => {
     if (!localStorage.getItem("tokenId")) {
       history.push("/");
       return;
     }
 
-    const data = await axios.get(
-      `http://127.0.0.1:8000/users/userpuzzle/${localStorage
-        .getItem("tokenId")
-        .slice(1, -1)}`
-    );
+    const data = await axios.get(`http://127.0.0.1:8000/users/userpuzzle`, {
+      params,
+    });
     setUserData(data.data);
   };
 
