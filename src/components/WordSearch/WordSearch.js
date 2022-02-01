@@ -22,14 +22,14 @@ const WordSearch = () => {
 
   const fetchWords = async () => {
     const { data } = await axios.get(
-      `http://127.0.0.1:8000/api/${searchFunction}/${query}`
+      `http://liscrabble.com/api/${searchFunction}/${query}`
     );
     setWords(data);
   };
 
   const fetchDefinition = async () => {
     const { data } = await axios.get(
-      `http://127.0.0.1:8000/api/definition/${definitionQuery}`
+      `http://liscrabble.com/api/definition/${definitionQuery}`
     );
     setDefinition(data);
   };

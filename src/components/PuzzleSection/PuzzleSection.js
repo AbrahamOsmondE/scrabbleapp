@@ -14,7 +14,7 @@ const PuzzleSection = () => {
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
   const getRandomWord = async () => {
-    const { data } = await axios.get(`http://127.0.0.1:8000/api/puzzle`);
+    const { data } = await axios.get(`http://liscrabble.com/api/puzzle`);
     setCorrects(0);
     setErrors(0);
     if (!hasSubmitted) {

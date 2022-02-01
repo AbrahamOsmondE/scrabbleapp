@@ -21,7 +21,7 @@ const Profile = () => {
       return;
     }
 
-    const data = await axios.get(`http://127.0.0.1:8000/users/userpuzzle`, {
+    const data = await axios.get(`http://liscrabble.com/users/userpuzzle`, {
       params,
     });
     setUserData(data.data);

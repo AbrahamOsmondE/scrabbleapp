@@ -21,7 +21,7 @@ const Header = () => {
       Authorization: idToken,
       "Content-Type": "application/json",
     };
-    return axios.post("http://127.0.0.1:8000/users/login", data, { headers });
+    return axios.post("http://liscrabble.com/users/login", data, { headers });
   };
 
   const onGoogleLoginSuccess = useCallback((response) => {

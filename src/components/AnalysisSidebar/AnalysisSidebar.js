@@ -43,7 +43,7 @@ const AnalysisSidebar = ({
     boardString = boardString.substring(0, boardString.length - 1);
 
     const { data } = await axios.get(
-      `http://127.0.0.1:8000/api/solve/${rack
+      `http://liscrabble.com/api/solve/${rack
         .map((i) => i.toUpperCase())
         .join("")}/?${boardString}`
     );
