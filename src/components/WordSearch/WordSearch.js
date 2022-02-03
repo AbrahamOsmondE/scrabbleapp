@@ -36,7 +36,7 @@ const WordSearch = () => {
 
   const handleChange = (event) => {
     let value = event.target.value;
-    value = value.replace(/[^A-Za-z*]/gi, "");
+    value = value.replace(/[^A-Za-z]/gi, ""); ///[^A-Za-z*]/
     if (value.split("*").length - 1 > 1) {
       return;
     }
@@ -83,7 +83,7 @@ const WordSearch = () => {
         ) : (
           <h1>Enter some characters</h1>
         )}
-        Wild card is *, currently only supports 1 wild card
+        {/* Wild card is *, currently only supports 1 wild card */}
         <div className="WordSearchInputs">
           <input
             className="WordSearchInput"
