@@ -122,7 +122,7 @@ const PuzzleSection = () => {
       possible_answers: puzzle?.count,
     };
     setHasSubmitted(true);
-    return axios.post("http://127.0.0.1:8000/puzzle/submit", data, { headers });
+    return axios.post("http://liscrabble.com/puzzle/submit", data, { headers });
   };
   return (
     <div className="PuzzleSection">
