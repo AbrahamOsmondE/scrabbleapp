@@ -12,14 +12,15 @@ const Profile = () => {
 
   const history = useHistory();
 
-  const params = {
-    google_id: `${localStorage.getItem("tokenId").slice(1, -1)}`,
-  };
   const getUserData = async () => {
     if (!localStorage.getItem("tokenId")) {
       history.push("/");
       return;
     }
+
+    const params = {
+      google_id: `${localStorage.getItem("tokenId")?.slice(1, -1)}`,
+    };
 
     const data = await axios.get(`http://liscrabble.com/users/userpuzzle`, {
       params,
