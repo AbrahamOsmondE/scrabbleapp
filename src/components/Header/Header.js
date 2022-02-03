@@ -52,7 +52,7 @@ const Header = () => {
   };
 
   const onGoogleLoginFailure = useCallback((response) => {
-    console.log("Failure");
+    console.log(response, "fail");
   }, []);
 
   return (
